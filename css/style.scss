@@ -1,0 +1,312 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+$navbar-height: 80px;
+$sidebar-width: 280px;
+$label-width: 38px;
+body{
+  background: #EFF0F2;
+  color: #EFF0F2;
+  font-family: 'Roboto', Helvetica Neue, sans-serif;
+}
+
+main{
+  display: flex;
+  max-width: calc(100% - #{$sidebar-width});
+  position: relative;
+  left: $sidebar-width;
+  top: $navbar-height;
+  background: #000;
+
+   &.zoomed{
+    .original{
+      display: none;
+    }
+    .bg_target{
+      width: 70%;
+      margin: auto;
+
+      video{
+        transform: scale(.9) !important
+      }
+    }
+  }
+
+  >div{
+    width: 50%; 
+
+    &:nth-child(1),
+    &:nth-child(2){
+      position: relative;
+      
+      &:before{
+        content:'Original';
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        background: rgba(black, .6);
+        margin: .6em;
+        border-radius: 3px;
+        color: #EFF0F2;
+        padding: .6em;
+      }
+    }
+    &:nth-child(2):before{
+      content: 'CSS Effects';
+    }
+  }
+  
+  video{
+    width: 100%;
+    display: block;
+    float: left;
+
+    transform: scale(.8);
+  }
+
+
+}
+
+.controls{
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: $sidebar-width;
+  width: $sidebar-width;
+  background: #EFF0F2;
+  color: #000;
+  height: 100%;
+  border-right: 2px solid darken(#CCC, 15%);
+
+
+  > div{
+    width: calc(100% - 16px);
+    padding: 4px 8px;
+    float: left;
+    height: 38px;
+
+    label{
+      width: 100%;
+      float: left;
+      color: white;
+      margin-bottom: .5em;
+      color: #000;
+    }
+  }
+}
+.nav-row{
+  padding: .5em;
+}
+// .target{
+//   filter: blur(20px) contrast(3000%);
+// }
+
+[disabled]{
+  opacity: .5;
+}
+
+$bg-colors: (
+  1: 'red',
+  2: 'blue'
+);
+
+.nav{
+  position: absolute;
+  left: $sidebar-width;
+  top: 0;
+  width: calc(100% - #{$sidebar-width});
+  float: left;
+  height: $navbar-height;
+  background: #EFF0F2;
+  color: #000;
+
+
+  span[class*="bg_"]{
+    height: calc(#{$navbar-height} - 2em);
+    width: 40px;
+    display: block;
+    float: left;
+    margin: .4em;
+    background: #EFF0F2;
+
+    @each $key, $value in $bg-colors{
+      &:nth-child(#{$key}){
+        background: #{$value};
+        cursor: pointer;
+        
+      }
+    }
+  }
+}
+
+.bgs{
+  float: left;
+  width: 200px;
+
+  a{
+    padding: 1em 1.5em;
+    margin: .2em;
+  }
+}
+
+// Color wheel
+#backgroundColorPicker{
+  visibility: hidden;
+  
+  
+}
+.colorWheel {
+  overflow: hidden;
+  position: reltaive;
+  margin: 1em 1em 1em 2em !important;
+  width: 2.5em; 
+  height: 2.5em;
+  float: left;
+  cursor: pointer;
+  border-radius: 100%;
+background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  animation: layer 10s infinite linear;
+  filter: contrast(2);
+}
+
+.dotted {
+  // padding: 2.25em 1.6875em;
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,1), rgba(0,0,0,1) 3px, transparent 3px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,1), rgba(0,0,0,1) 3px, transparent 3px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,1), rgba(0,0,0,1) 3px, transparent 3px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, rgba(0,0,0,1), rgba(0,0,0,1) 3px, transparent 3px, transparent 100%);
+  -webkit-background-size: 6px 6px;
+  -moz-background-size: 6px 6px;
+  background-size: 6px 6px;
+  }
+
+.stripped {
+  // padding: 2.25em 1.6875em;
+  background-image: -webkit-repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  background-image: -moz-repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  background-image: -o-repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  background-image: repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  -webkit-background-size: 4px 4px;
+  -moz-background-size: 4px 4px;
+  background-size: 4px 4px;
+  }
+
+
+output{
+  width: $label-width;
+  float: left;
+  text-align: center;
+  line-height: 0;
+}
+// Range 
+input[type="range"] {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  width: calc(100% - #{$label-width*1.2});
+  float: left;
+  height: 6px;
+  margin: 0;
+  border: none;
+  padding: 1px 2px;
+  border-radius: 14px;
+  background: #EFF0F2;
+  border: 1px solid darken(#CCC, 5%);
+  outline: none; /* no focus outline */
+  &:focus{
+    &::-webkit-slider-thumb{  background:darken(#CCC, 15%);}
+  }
+  &:hover,
+  &:active{
+    &::-webkit-slider-thumb{
+      height: 14px;
+    }
+  }
+}
+
+input[type="range"]::-moz-range-track {
+  border: inherit;
+  background: transparent;
+}
+
+input[type="range"]::-ms-track {
+  border: inherit;
+  color: transparent; /* don't drawn vertical reference line */
+  background: transparent;
+}
+
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+  background: transparent;
+}
+
+input[type="range"]::-ms-tooltip {
+  display: none;
+}
+
+/* thumb */
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 40px;
+  height: 10px;
+  border: none;
+  border-radius: 12px;
+  background:lighten(#CCC, 15%);
+  border:1px solid darken(#CCC, 20%);
+  cursor: pointer;
+  
+}
+input[type="range"]::-moz-range-thumb {
+  width: 40px;
+  height: 10px;
+  border: none;
+  border-radius: 12px;
+  border:1px solid darken(#CCC, 20%);
+  background:lighten(#CCC, 15%);
+}
+
+input[type="range"]::-ms-thumb {
+  width: 40px;
+  height: 10px;
+  border-radius: 12px;
+  border: 0;
+  background:lighten(#CCC, 15%);
+  border:1px solid darken(#CCC, 20%);
+}
+
+.sets{
+  margin-top: .5em;
+  border-top: 2px solid darken(#ccc, 15%);
+}
+
+.btn{
+  width: 98%;
+  display: block;
+  float: left;
+  background: transparent;
+  border: 2px solid currentColor;
+  color: darken(#ccc, 15%);
+  padding: .5em 0;
+  text-align: center;
+  text-decoration: none;
+  margin-top: .5em;
+  margin-left: 1%;
+  border-radius: 4px;
+
+  &.danger{
+    color: #F25300;
+
+    &:hover{
+      background: #F25300;
+      color: #fff;
+      border-color: #F25300;
+    }
+  }
+
+  &:hover{
+    color: #00AEFF;
+  }
+}

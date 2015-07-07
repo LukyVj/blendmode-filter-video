@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Blend modes, filtres CSS & video</title>
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+  <main id='main'>
+    <div class="original"> 
+      <video id="video" autoplay></video>
+    </div>
+    <div class="bg_target" id='target'>
+      <video id="video-t" class="target" autoplay target></video>
+    </div> 
+  </main>
+
+  <div class="nav">
+
+    <div class="bgs">
+        
+         <label for="backgroundColorPicker"><div class="colorWheel" style="/* Hue wheel */
+background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+border-radius: 50%"></div></label>
+     <input id="backgroundColorPicker" name="backgroundColorPicker" type="color" value='#4499f0'>
+
+     <div class="bg_type">
+      <a href="#" id="stripped" class="bg_stripped stripped"></a>
+      <a href="#" id="dotted" class="bg_dotted dotted"></a>
+    </div>
+    </div>
+
+    
+
+    <div class="bg-blend-mode">
+     
+      <div class="nav-row">
+        <label for="mixblendmode">Blend-modes</label>
+      <input type="checkbox" id="mixblendmode" name="mixblendmode">
+      <select name="selMixBlendMode" id="selMixBlendMode" style="display: none">
+        <option value="normal">normal</option>
+        <option value="multiply">multiply</option>
+        <option value="screen">screen</option>
+        <option value="overlay">overlay</option>
+        <option value="darken">darken</option>
+        <option value="lighten">lighten</option>
+        <option value="color-dodge">color-dodge</option>
+        <option value="color-burn">color-burn</option>
+        <option value="hard-light">hard-light</option>
+        <option value="soft-light">soft-light</option>
+        <option value="difference">difference</option>
+        <option value="exclusion">exclusion</option>
+        <option value="hue">hue</option>
+        <option value="saturation">saturation</option>
+        <option value="color">color</option>
+        <option value="luminosity">luminosity</option>
+      </select>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+<div>
+      <label for="opacity">opacity</label>
+
+    <input type="range" value="1" id="opacity" name="opacity" min="0" max="99991999" step="1"
+    oninput="document.getElementById('opacityValue').value=document.getElementById('opacity').value">
+</div>
+    <!-- CSS FILTERS -->
+    <div>
+      <label for="blur">blur</label>
+      <input type="range" value="0" id="blur" name="blur" min="0" max="100" step="1"
+      oninput="document.getElementById('blurValue').value=document.getElementById('blur').value">
+      <output for="blur" id="blurValue" value="0">0</output>
+    </div>
+    <div>
+      <label for="contrast">contrast</label>
+      <input type="range" value="1" id="contrast" name="contrast" min="0" max="100" step="1"
+      oninput="document.getElementById('contrastValue').value=document.getElementById('contrast').value">
+      <output for="contrast" id="contrastValue" value="1">1</output>
+    </div>
+    <div>
+      <label for="sepia">sepia</label>
+      <input type="range" value="0" id="sepia" name="sepia" min="0" max="100" step="1"
+      oninput="document.getElementById('sepiaValue').value=document.getElementById('sepia').value">
+      <output for="sepia" id="sepiaValue" value="0">0</output>
+    </div>
+    <div>
+      <label for="grayscale">grayscale</label>
+      <input type="range" value="0" id="grayscale" name="grayscale" min="0" max="100" step="1"
+      oninput="document.getElementById('grayscaleValue').value=document.getElementById('grayscale').value">
+      <output for="grayscale" id="grayscaleValue" value="0">0</output>
+    </div>
+    <div>
+      <label for="hue">hue</label>
+      <input type="range" value="0" id="hue" name="hue" min="0" max="1000" step="10"
+      oninput="document.getElementById('hueValue').value=document.getElementById('hue').value">
+      <output for="hue" id="hueValue" value="0">0</output>
+    </div>
+    <div>
+      <label for="brightness">brightness</label>
+      <input type="range" value="1" id="brightness" name="brightness" min="0" max="100" step="1"
+      oninput="document.getElementById('brightnessValue').value=document.getElementById('brightness').value">
+      <output for="brightness" id="brightnessValue" value="1">1</output>
+    </div>
+    
+    <div class="sets">
+      <a href="#" class="btn" id="set1">preset 1 - gooey</a>
+      <a href="#" class="btn" id="set2">preset 2 - Red Fieldd</a>
+      <a href="#" class="btn" id="set3">preset 3 - Blue stripes</a>
+      <a href="#" class="btn danger" id="reset">reset</a>
+    </div>
+
+
+  </div>
+
+  <script src="scripts/app/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script src="js/conic-gradient.js"></script>
+
+</body>
+</html>
